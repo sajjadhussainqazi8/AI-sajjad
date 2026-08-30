@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Voice sunne ke liye -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Foreground service (hamesha background me chalne ke liye) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <!-- Call karne ke liye -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- SMS bhejne ke liye -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- Internet (agar future me API use karein) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Battery optimization se bachne ke liye -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="AI Assistant"
+        android:theme="@style/Theme.AppCompat.Light">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".VoiceAssistantService"
+            android:foregroundServiceType="microphone"
+            android:exported="false" />
+
+    </application>
+</manifest>
